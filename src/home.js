@@ -1,20 +1,24 @@
+// INPUT = an array of book objects
 function getTotalBooksCount(books = []) {
   return books.length;
-}
+} // OUTPUT = a number of total books
 
+// INPUT = an array of account objects
 function getTotalAccountsCount(accounts=[]) {
-  return accounts.length;
-}
+  return accounts.length; 
+} // OUTPUT = a number of total accounts
 
+// INPUT = an array of book objects
 function getBooksBorrowedCount(books) {
+
+  // loop through books array and count the total number of books that are not returned
   return books.reduce( ( total, book ) =>{
+    // if not returned, add 1 to the total count
     return book.borrows[0].returned ? total += 0 : total += 1;
   }, 0 );
-}
+} // OUTPUT = a number of books that are currently checked out
 
-// REVIEW: For/in
-// INPUT Array(Objects)
-// OUTPUT Array(Objects) 
+// INPUT = array of book objects
 function getMostCommonGenres(books) {
   // return [ { name, count } ] of 5 or less objects with common genres sorted by highest to lowest.
 
@@ -48,15 +52,16 @@ function getMostCommonGenres(books) {
 
   // return the first 5 or fewer
   return result.slice(0,5);
-}
-// getMostCommonGenres(books)
+}// OUTPUT = an array of 5 objects or less with the most common genres
 
+// INPUT = an array of book objects
 function getMostPopularBooks(books) {
 
   // return array with 5 or less books, sorted by most popular (number of borrows)
 
   let result = [];
 
+  // loop through books object. For each object, add the book.borrows count to result
   books.forEach( book => {
     if( result.length === 0 ){
       result = [ { name: book.title, count: book.borrows.length } ];
@@ -65,6 +70,7 @@ function getMostPopularBooks(books) {
     }
   });
   
+  // sort from most popular (number of borrows) to least popular
   result.sort( (bookA,bookB) => {
     if( bookA.count < bookB.count ){
       return 1;
@@ -77,10 +83,9 @@ function getMostPopularBooks(books) {
     }
   })
   return result.slice(0,5);
-}
-// getMostPopularBooks(books)
+} // OUTPUT = an array of 5 or less objects of the most popular books
 
-// REVIEW:
+// INPUT = an array of book objects, an array of author objects
 function getMostPopularAuthors(books, authors) {
   let result = [];
   books.forEach( book => {
@@ -93,6 +98,7 @@ function getMostPopularAuthors(books, authors) {
 
     const borrows = book.borrows.length;
 
+    // add the borrows count to result array
     if( result.length === 0 ){
       result = [ { name: authorFullName, count: borrows } ]
     } else if ( findAuth === undefined ) {
@@ -102,6 +108,8 @@ function getMostPopularAuthors(books, authors) {
       result[ind].count += borrows;
     }
   });
+
+  // sort from most borrows to least
   result.sort( ( bookA, bookB ) => {
     if( bookA.count < bookB.count ){
       return 1;
@@ -114,7 +122,7 @@ function getMostPopularAuthors(books, authors) {
     }
   })
   return result.slice(0,5);
-}
+} // OUTPUT = an array of 5 objects or less with the most popular authors (based on number of books checked out)
 
 module.exports = {
   getTotalBooksCount,
