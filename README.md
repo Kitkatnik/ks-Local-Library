@@ -1,4 +1,4 @@
-# Name of project here
+# Local Library Application
 
 <div align="center">
 
