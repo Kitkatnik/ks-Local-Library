@@ -1,12 +1,15 @@
 {
   "name": "project-local-library",
   "version": "1.0.0",
+  "homepage": "https://kitkatnik.github.io/ks-Local-Library/",
   "description": "",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "predeploy": "npm run docker:build",
+    "deploy": "gh-pages -d build",
     "docker:build": "docker image build . -t thinkful-ed/zid-pf-project-loc-library-01-qualified-assignment",
     "docker:run": "docker run --rm -it -p 3000:3000 thinkful-ed/zid-pf-project-loc-library-01-qualified-assignment",
     "docker:stop": "docker stop $(docker ps -q)",
@@ -21,7 +24,8 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",
-    "colors": "1.4.0",  
+    "colors": "1.4.0",
+    "gh-pages": "^5.0.0",
     "live-server": "1.2.1",
     "mocha": "^8.1.1"
   }
