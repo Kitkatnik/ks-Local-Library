@@ -4,7 +4,7 @@
 
 ![LocalLibrary](https://user-images.githubusercontent.com/5871075/213825567-1fde3c3a-0fe9-47ee-aec9-6367013a520c.png)
 
-Demo coming soon
+[Click Here to Demo](https://kitkatnik.github.io/ks-Local-Library/)
 
 </div>
 
